@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🐬 Server Attack & Defense Lab
 
-## Getting Started
+Dolphin Strike is a Rust-based cyber security lab for simulating and analyzing network attacks and defenses in a controlled environment.
 
-First, run the development server:
+This project helps understand how attacks work and how to detect and defend against them.
+
+---
+
+## ⚙️ Components
+
+### attack-tools/
+Simulates attack scenarios.
+
+Tools:
+- multi-stresser → high-concurrency connection stress tester
+- (planned) port scanner
+- (planned) slowloris simulator
+ ## 🚀 Kullanım örnekleri
+
+Normal:
+
+cargo run --release -- 127.0.0.1:8081 10000 1000
+
+
+Hold mode:
+
+cargo run --release -- 127.0.0.1:8081 10000 1000 hold
+
+
+Infinite mode:
+
+cargo run --release -- 127.0.0.1:8081 10000 1000 infinite
+
+
+Infinite hold mode :
+
+cargo run --release -- 127.0.0.1:8081 10000 1000 hold infinite
+ 
+  ###
+
+---
+
+### defense-lab/
+Detects and analyzes suspicious activity.
+
+Modules:
+- analyzer → detects connection floods
+- JSON attack logging
+- IP tracking
+
+---
+
+## 🚀 Getting Started
+
+### Run analyzer
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+cd defense-lab/analyzer
+cargo run --release
