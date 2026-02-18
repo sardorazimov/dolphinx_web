@@ -23,7 +23,7 @@ const Footer = () => {
         {footerLinks.map((link, index) => (
           <React.Fragment key={link}>
             <a
-              href="#"
+              href={`/dashboard/${link.toLowerCase().replace(/\s+/g, "-")}`}
               className="text-[11px] md:text-[12px] font-bold  hover:text-gray-400 transition-colors"
             >
               {link}
