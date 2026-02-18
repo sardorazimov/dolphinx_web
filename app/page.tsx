@@ -1,6 +1,7 @@
 import FeaturesSection from "../components/shared/feautures-section";
 import HeroContent from "../components/shared/hero-content";
-import Navbar from "../components/shared/navbar";
+import Header from "../components/shared/navbar";
+
 
 
 const VIDEO_URL = "./hero.mp4";
@@ -10,7 +11,7 @@ const page = () => {
     <div className="relative min-h-screen overflow-hidden bg-background">
       {/* Background Video */}
       <video
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover backdrop-blur-xl opacity-30"
         src={VIDEO_URL}
         autoPlay
         loop
@@ -21,7 +22,7 @@ const page = () => {
       <div className="absolute inset-0 bg-background/50" />
 
       {/* Content */}
-      <Navbar />
+      <Header />
       <HeroContent />
 
       {/* Features */}

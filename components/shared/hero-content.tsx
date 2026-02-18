@@ -1,4 +1,6 @@
-import { GlowPillButton } from "./navbar";
+import { Github } from "lucide-react";
+import { Button } from "../ui/button";
+
 
 const HeroContent = () => {
   return (
@@ -20,9 +22,11 @@ const HeroContent = () => {
         }}
       >
         <span className="block w-1 h-1 rounded-full bg-foreground" />
-        <span className="text-[13px] font-medium">
-          <span className="text-foreground/60">Early access available from</span>
-          <span className="text-foreground"> May 1, 2026</span>
+        <span className="text-[13px] font-medium flex gap-1">
+          <span className="text-foreground/60">
+          <a href="https://github.com/sardorazimov/dolphinx" className="flex w-full itemms-center gap-1">GitHub <Github size={24} /></a>
+          </span>
+          <span className="text-foreground"> </span>
         </span>
       </div>
 
@@ -48,7 +52,7 @@ const HeroContent = () => {
       </p>
 
       {/* CTA */}
-      <GlowPillButton variant="filled">Join Waitlist</GlowPillButton>
+      <Button>Join Waitlist</Button>
     </div>
   );
 };

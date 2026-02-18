@@ -1,64 +1,89 @@
-import { ChevronDown } from "lucide-react";
+"use client";
 
-const navLinks = ["Get Started", "Developers",];
+import React from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
+import { Menu, Terminal } from "lucide-react";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { Button } from "../ui/button";
+import MobileMenu from "./mobil-menu";
 
-const GlowPillButton = ({ children, variant = "outline" }: { children: React.ReactNode; variant?: "outline" | "filled" }) => {
-  const isOutline = variant === "outline";
+export default function Header() {
+  const { scrollY } = useScroll();
+
+  // 0 ile 100px arası scroll yapıldığında değerleri dönüştür:
+  // 1. Üstten 0px'den 15px'e iner
+  const top = useTransform(scrollY, [0, 100], [0, 15]);
+  
+  // 2. Genişlik %100'den %90'a (veya max-w-6xl'e) düşer
+  const width = useTransform(scrollY, [0, 100], ["100%", "90%"]);
+  
+  // 3. Kenar yuvarlaklığı 0'dan 2rem'e çıkar
+  const borderRadius = useTransform(scrollY, [0, 100], ["0px", "2rem"]);
+  
+  // 4. Arka plan şeffaflığı ve border belirginliği
+  const backgroundColor = useTransform(
+    scrollY,
+    [0, 100],
+    [")", ")"]
+  );
+  const borderColor = useTransform(
+    scrollY,
+    [0, 100],
+    [")", ""]
+  );
+
   return (
-    <button
-      className="relative rounded-full"
-      style={{ padding: "0.6px", border: "0.6px solid rgba(255,255,255,0.6)" }}
-    >
-      {/* Top glow streak */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[6px] rounded-full pointer-events-none"
+    <div className="fixed top-0 left-0 right-0 z-[100] mt-3 flex justify-center pointer-events-none px-10 ">
+      <motion.header
         style={{
-          background: "radial-gradient(ellipse at center, rgba(255,255,255,0.5) 0%, transparent 70%)",
-          filter: "blur(3px)",
+          top,
+          width,
+          borderRadius,
+          backgroundColor,
+          borderColor,
         }}
-      />
-      <div
-        className={`relative rounded-full text-[14px] font-medium ${
-          isOutline
-            ? "bg-background text-foreground"
-            : "bg-foreground text-background"
-        }`}
-        style={{ padding: "11px 29px" }}
+        className="pointer-events-auto  flex items-center justify-between  h-16 transition-colors"
       >
-        {children}
-      </div>
-    </button>
-  );
-};
+        {/* LOGO */}
+        <Link href="/" className="flex items-center gap-2 group">
+          {/* <img src="" alt="" /> */}
+          <span className="font-extrabold  text-4xl tracking-tighter text-white ">
+            dolphinx
+            <span className="text-blue-500">.</span>
+          </span>
+        </Link>
 
-const Navbar = () => {
-  return (
-   <nav
-      // 'fixed top-0 left-0' ile en üste sabitledik. 
-      // 'backdrop-blur' ile arkadaki içeriğin bulanık görünmesini sağladık (estetik dokunuş).
-      className="fixed top-0 left-0 z-50 flex items-center justify-between w-full  "
-      style={{ padding: "20px 120px" }}
-    >
-      {/* Sol taraf: Logo + Linkler */}
-      <div className="flex items-center" style={{ gap: "30px" }}>
-        <div className="text-foreground font-semibold tracking-tight text-lg flex items-center" style={{ width: 187, height: 25 }}>
-          LOGOIPSUM
-        </div>
-        <div className="hidden md:flex items-center" style={{ gap: "30px" }}>
-          {navLinks.map((link) => (
-            <a key={link} href="#" className="flex items-center text-foreground text-[14px] font-medium hover:opacity-80 transition-opacity" style={{ gap: "14px" }}>
-              {link}
-              <ChevronDown size={14} />
-            </a>
+        {/* MENÜ LİNKLERİ */}
+        <nav className="hidden md:flex items-center gap-6">
+          {["Developers", "Docs", ""].map((item) => (
+            <Link
+              key={item}
+              href={`/dashboard/${item.toLowerCase()}`}
+              className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
+            >
+              {item}
+            </Link>
           ))}
-        </div>
-      </div>
+        </nav>
 
-      {/* Sağ taraf: CTA */}
-      <GlowPillButton variant="outline">Join Waitlist</GlowPillButton>
-    </nav>
+        {/* AKSİYON BUTONU */}
+        <button className="bg-white text-black text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-lg hover:bg-zinc-200 transition-all hidden lg:flex">
+          Initialize
+        </button>
+        {/* MOBİL MENÜ */}
+        <MobileMenu />
+
+      </motion.header>
+    </div>
   );
-};
-
-export { GlowPillButton };
-export default Navbar;
+}
