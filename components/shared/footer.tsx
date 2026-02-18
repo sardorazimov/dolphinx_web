@@ -1,76 +1,86 @@
-import { Twitter, Github, Linkedin, Mail } from "lucide-react";
+"use client";
 
-const footerLinks = {
-  Product: ["Features", "Security", "Pricing", "Resources"],
-  Company: ["About", "Careers", "Contact", "Privacy"],
-  Developers: ["Documentation", "API Reference", "Status", "Open Source"],
-};
+import React from "react";
+import { Github, Globe } from "lucide-react";
+import Link from "next/link";
+
+const footerLinks = [
+  "DEVELOPERS",
+  "TERMS OF USE",
+  "DOCS",
+  "CAREERS",
+  
+  
+];
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="relative border-t border-white/10 bg-background pt-20 pb-10 overflow-hidden">
-      {/* Arkaplan Parlaması (Subtle Glow) */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
-
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
-          
-          {/* Logo ve Motto Bölümü */}
-          <div className="col-span-2">
-            <div className="text-foreground font-bold tracking-tight text-xl mb-4">
-              LOGOIPSUM
-            </div>
-            <p className="text-muted-foreground text-sm max-w-[280px] leading-relaxed">
-              Building the future of digital infrastructure. Fast, secure, and infinitely scalable.
-            </p>
-            <div className="flex gap-4 mt-6">
-              <SocialIcon icon={<Twitter size={18} />} />
-              <SocialIcon icon={<Github size={18} />} />
-              <SocialIcon icon={<Linkedin size={18} />} />
-            </div>
-          </div>
-
-          {/* Link Sütunları */}
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title} className="flex flex-col gap-4">
-              <h4 className="text-foreground font-semibold text-sm">{title}</h4>
-              <ul className="flex flex-col gap-3">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-muted-foreground text-sm hover:text-foreground transition-colors">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+    <footer className="bg-black text-white py-12 px-6">
+      {/* 1. Üst Linkler: İnce Separatörlü Yapı */}
+      <div className="max-w-7xl mx-auto flex flex-wrap justify-center items-center gap-y-4 mb-16">
+        {footerLinks.map((link, index) => (
+          <React.Fragment key={link}>
+            <a
+              href="#"
+              className="text-[11px] md:text-[12px] font-bold  hover:text-gray-400 transition-colors"
+            >
+              {link}
+            </a>
+            {index !== footerLinks.length - 0 && (
+              <span className="mx-4 text-gray-600 hidden md:inline"></span>
+            )}
+          </React.Fragment>
+        ))}
+        <div className="">
+          {/* <span className="text-[10px] font-bold tracking-tighter">YOUR PRIVACY CHOICES</span>
+          <div className="w-8 h-4 bg-blue-500 rounded-full relative">
+             <div className="absolute right-1 top-1 w-2 h-2 bg-white rounded-full" />
+          </div>  */}
         </div>
+      </div>
 
-        {/* Alt Kısım: Copyright */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-xs">
-            © 2024 Logoipsum Inc. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6 text-xs text-muted-foreground">
-            <a href="#" className="hover:text-foreground">Privacy Policy</a>
-            <a href="#" className="hover:text-foreground">Terms of Service</a>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span>System Operational</span>
-            </div>
-          </div>
+      {/* 2. Orta Logo Alanı */}
+      <div className="flex justify-center mb-16">
+        <Link href="/" className="text-3xl font-black tracking-tighter italic flex items-center ">
+           <img src="./logo.png" alt=""  className="w-15 " /> 
+           dolphinx 
+        </Link>
+      </div>
+
+      {/* 3. Sertifika ve Rating Logoları (Placeholder) */}
+      {/* <div className="flex justify-center gap-8 mb-12 opacity-80">
+        <div className="w-16 h-20 border border-white/20 flex items-center justify-center text-[10px] text-center p-1">
+          PRIVACY CERTIFIED
         </div>
+        <div className="w-16 h-20 border border-white/20 flex items-center justify-center text-2xl font-bold">
+          M
+        </div>
+      </div> */}
+
+      {/* 4. Dinamik Telif Hakları ve İsim */}
+      <div className="text-center mb-8">
+        <p className="text-[11px] md:text-[13px] tracking-[0.2em] text-gray-400 font-medium uppercase">
+          {/* © / TM / ® */} 2019 – {currentYear} Sardor Azimov. All rights reserved.
+        </p>
+      </div>
+
+      {/* 5. Kurumsal Buton */}
+      <Link href="/" className="flex justify-center mb-10">
+        <button className="border-2 border-white/20 px-10 py-3 text-[12px] font-bold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all duration-300 active:scale-95">
+          WebSite
+        </button>
+      </Link>
+
+      {/* 6. En Alt Dil/Ülke Seçimi */}
+      <div className="flex w-full justify-center items-center gap-4">
+        <Link href="/"><Globe size={14} /></Link>
+         <Link href="https://github.com/sardorazimov"><Github size={14} /></Link>
+        <span className="text-[10px] font-bold tracking-widest uppercase"></span>
       </div>
     </footer>
   );
 };
-
-// Sosyal Medya İkon Yardımcısı
-const SocialIcon = ({ icon }: { icon: React.ReactNode }) => (
-  <a href="#" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:bg-white/5 hover:text-foreground transition-all">
-    {icon}
-  </a>
-);
-
+ 
 export default Footer;

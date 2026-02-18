@@ -81,7 +81,10 @@ export default function Header() {
           Initialize
         </button>
         {/* MOBİL MENÜ */}
-        <MobileMenu />
+        <div className="md:hidden">
+             <MobileMenu />  
+        </div>
+     
 
       </motion.header>
     </div>
