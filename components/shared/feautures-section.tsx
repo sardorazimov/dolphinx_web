@@ -2,6 +2,7 @@
 import { Zap, Shield, Globe, Layers } from "lucide-react";
 import { motion } from "framer-motion";
 import { desc } from "framer-motion/client";
+import NeuralTerminal from "./terminal";
 
 const features = [
   {
@@ -55,15 +56,12 @@ const FeaturesSection = () => {
             backgroundClip: "text",
           }}
         >
-          Dolphinx is built for performance, clarity, and control.
-
-Unlike traditional tools, Dolphinx combines offensive testing and defensive analysis into a single unified platform.
-
-Written in Rust for maximum speed, memory safety, and reliability.
 
         </h2>
       </motion.div>
-
+      <div className="mb-20">
+        <NeuralTerminal />
+      </div>
       {/* Cards grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-[1200px] mx-auto">
         {features.map((feature, index) => (
