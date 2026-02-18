@@ -1,28 +1,34 @@
 "use client";
 import { Zap, Shield, Globe, Layers } from "lucide-react";
 import { motion } from "framer-motion";
+import { desc } from "framer-motion/client";
 
 const features = [
   {
     icon: Zap,
     title: "Lightning Fast",
-    description: "Sub-second finality with over 10,000 transactions per second, built for real-time applications.",
+    description: "High-Speed Port ScanningScan thousands of ports concurrently using an async Rust engine.Fast, efficient, and reliable.",
   },
   {
     icon: Shield,
     title: "Enterprise Security",
-    description: "Battle-tested smart contract infrastructure with built-in audit tooling and formal verification.",
+    description: "Stress Testing EngineSimulate high-load network conditions to benchmark server performance.Supports TCP and HTTP testing modes.",
   },
   {
     icon: Globe,
     title: "Global Scale",
-    description: "A decentralized network spanning 50+ countries, ensuring uptime and censorship resistance.",
+    description: "Real-Time MetricsTrack live connections, success rates, efficiency, and performance in real time.",
   },
   {
     icon: Layers,
     title: "Composable Stack",
-    description: "Modular primitives that snap together — DeFi, identity, storage, and governance out of the box.",
+    description: "Benchmark ModeAutomatically determine maximum stable throughput of a target system.Export results to JSON reports.",
   },
+  {
+    icon: Zap,
+    title: "Lightning Fast",
+    description: "Modular ArchitectureBuilt with scalability in mind. Easily extend with new modules and features.",
+  }
 ];
 
 const FeaturesSection = () => {
@@ -37,7 +43,8 @@ const FeaturesSection = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <p className="text-[13px] font-medium text-foreground/50 uppercase tracking-[0.2em] mb-4">
-          Why Build on EOS
+          Why Dolphinx?
+
         </p>
         <h2
           className="text-[32px] md:text-[44px] font-medium leading-[1.2] max-w-[520px] mx-auto"
@@ -48,7 +55,12 @@ const FeaturesSection = () => {
             backgroundClip: "text",
           }}
         >
-          Infrastructure for the next era
+          Dolphinx is built for performance, clarity, and control.
+
+Unlike traditional tools, Dolphinx combines offensive testing and defensive analysis into a single unified platform.
+
+Written in Rust for maximum speed, memory safety, and reliability.
+
         </h2>
       </motion.div>
 

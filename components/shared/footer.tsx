@@ -40,7 +40,9 @@ const Footer = () => {
           </div>  */}
         </div>
       </div>
-
+      <div>
+        
+      </div>
       {/* 2. Orta Logo Alanı */}
       <div className="flex justify-center mb-16">
         <Link href="/" className="text-3xl font-black tracking-tighter italic flex items-center ">

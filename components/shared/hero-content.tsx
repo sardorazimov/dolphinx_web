@@ -24,7 +24,7 @@ const HeroContent = () => {
         <span className="block w-1 h-1 rounded-full bg-foreground" />
         <span className="text-[13px] font-medium flex gap-1">
           <span className="text-foreground/60">
-          <a href="https://github.com/sardorazimov/dolphinx" className="flex w-full itemms-center gap-1">GitHub <Github size={24} /></a>
+            <a href="https://github.com/sardorazimov/dolphinx" className="flex w-full itemms-center gap-1">GitHub <Github size={24} /></a>
           </span>
           <span className="text-foreground"> </span>
         </span>
@@ -40,7 +40,8 @@ const HeroContent = () => {
           backgroundClip: "text",
         }}
       >
-        Web3 at the Speed of Experience
+        Dolphinx — Advanced Network Testing & Defense Platform
+
       </h1>
 
       {/* Subtitle */}
@@ -48,8 +49,14 @@ const HeroContent = () => {
         className="text-[15px] font-normal text-foreground/70 max-w-[680px] leading-relaxed"
         style={{ marginTop: -16 }}
       >
-        Powering seamless experiences and real-time connections, EOS is the base for creators who move with purpose, leveraging resilience, speed, and scale to shape the future.
+        A modern, high-performance network security toolkit written in Rust.
+        Built for scanning, stress testing, benchmarking, and real-time defense.
+        Dolphinx provides powerful and efficient tools to analyze, test, and understand network behavior.
+        Designed for developers, security researchers, and infrastructure engineers.
+
+
       </p>
+
 
       {/* CTA */}
       <Button>Join Waitlist</Button>
