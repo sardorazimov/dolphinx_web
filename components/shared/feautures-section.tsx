@@ -1,7 +1,6 @@
 "use client";
 import { Zap, Shield, Globe, Layers } from "lucide-react";
 import { motion } from "framer-motion";
-import { desc } from "framer-motion/client";
 import NeuralTerminal from "./terminal";
 
 const features = [
